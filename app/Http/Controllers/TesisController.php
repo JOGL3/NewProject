@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tesis;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use PDF;
 class TesisController extends Controller
 {
     /**
@@ -98,4 +99,22 @@ class TesisController extends Controller
     {
         //
     }
+    public function generatePDF()
+{
+    $data = DB::table('gestiontesis')
+                
+                ->get();
+      $pdf = PDF::loadView('tesis.pdf',['tesis'=>$data])->setPaper('a4','portrait');
+      return $pdf->stream('ReporteHC.pdf');
+    
 }
+
+public function descargarPDF()
+{
+    $data = ['title' => 'Welcome to HDTuto.com'];
+    $pdf = PDF::loadView('tesis.pdf', $data);
+
+    
+    return $pdf->download('itsolutionstuff.pdf');
+}
+    }

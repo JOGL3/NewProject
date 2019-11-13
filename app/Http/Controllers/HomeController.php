@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        
+                  
+       return view('dashboard');
     }
+
+
+
 }

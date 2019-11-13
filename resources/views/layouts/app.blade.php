@@ -104,7 +104,7 @@
         <script src="{{ asset('black') }}/js/theme.js"></script>
 
         @stack('js')
-
+        
         <script>
             $(document).ready(function() {
                 $().ready(function() {
@@ -198,9 +198,11 @@
 
                                 white_color = true;
                             }
+                            
                     });
                 });
             });
+            
         </script>
         @stack('js')
     </body>

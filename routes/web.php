@@ -17,7 +17,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-
+Route::get('stream','TesisController@generatePDF')->name('stream')->middleware('auth');
+Route::get('descargar','TesisController@descargarPDF')->name('descargar')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'PageController@maps']);

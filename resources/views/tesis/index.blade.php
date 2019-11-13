@@ -39,7 +39,7 @@
                             <td>
                             <a  data-toggle="modal" data-target="#modal-info-{{$ts->id}}" class="btn btn-info btn-sm" href="">Ver</a>
                             @include('tesis.info')
-                            <a href="{{url('tesis/pdf/'.$ts->id)}}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i></a>
+                            <a href="{{ route('stream') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i></a>
                             </td>
                           </tr>
                   @endforeach
