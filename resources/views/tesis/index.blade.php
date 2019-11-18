@@ -37,9 +37,10 @@
                             <td>{{$ts->siglas}}</td>
                             <td>{{ Carbon\Carbon::parse($ts->created_at)->format('Y-m-d') }}</td>
                             <td>
-                            <a  data-toggle="modal" data-target="#modal-info-{{$ts->id}}" class="btn btn-info btn-sm" href="">Ver</a>
+                            <a  data-toggle="modal" data-target="#modal-info-{{$ts->id}}" class="btn btn-info btn-sm" href="">Modal datos</a>
                             @include('tesis.info')
-                            <a href="{{ route('stream') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i></a>
+                            <a href="{{ route('stream') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>mostrar</a>
+                            <a href="{{ route('descargar') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>descargar</a>
                             </td>
                           </tr>
                   @endforeach

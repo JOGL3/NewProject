@@ -16,31 +16,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('tesis.store') }}" autocomplete="off">
+                        <form method="post" action="{{ route('tesis.store') }}" autocomplete="off" enctype="multipart/form-data">
                             @csrf
 
                             <h6 class="heading-small text-muted mb-4">{{ __('Información de Documentación') }}</h6>
                             <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('codigo') ? ' has-danger' : '' }}">
+                            <div class="col-xl-1 col-md-1 ">
                                     <label class="form-control-label" for="input-codigo">{{ __('Codigo') }}</label>
                                     <input type="text" name="codigo" id="input-codigo" class="form-control form-control-alternative{{ $errors->has('codigo') ? ' is-invalid' : '' }}" placeholder="{{ __('codigo') }}" value="{{ old('codigo') }}" required autofocus>
                                     @include('alerts.feedback', ['field' => 'codigo'])
                                 </div>
-                                <div class="form-group{{ $errors->has('nombre') ? ' has-danger' : '' }}">
+                                <div class="col-xl-2 col-md-2">
                                     <label class="form-control-label" for="input-nombre">{{ __('Nombre') }}</label>
-                                    <input type="text" name="nombre" id="input-nombre" class="form-control form-control-alternative{{ $errors->has('nombre') ? ' is-invalid' : '' }}" placeholder="{{ __('nombre') }}" value="{{ old('nombre') }}" required>
+                                    <input type="text" name="nombre" id="input-nombre" maxlength="20"class="form-control form-control-alternative{{ $errors->has('nombre') ? ' is-invalid' : '' }}" placeholder="{{ __('nombre') }}" value="{{ old('nombre') }}" required>
                                     @include('alerts.feedback', ['field' => 'nombre'])
                                 </div>
-                                <div class="form-group{{ $errors->has('carrera') ? ' has-danger' : '' }}">
+                                <div class="col-xl-2 col-md-2">
                                     <label class="form-control-label" for="input-carrera">{{ __('Carrera') }}</label>
-                                    <input type="text" name="carrera" id="input-carrera" class="form-control form-control-alternative{{ $errors->has('carrera') ? ' is-invalid' : '' }}" placeholder="{{ __('carrera') }}" value="{{ old('carrera') }}" required autofocus>
+                                    <input type="text" name="carrera" id="input-carrera" maxlength="20"class="form-control form-control-alternative{{ $errors->has('carrera') ? ' is-invalid' : '' }}" placeholder="{{ __('carrera') }}" value="{{ old('carrera') }}" required>
                                     @include('alerts.feedback', ['field' => 'carrera'])
                                 </div>
-                                <div class="form-group{{ $errors->has('siglas') ? ' has-danger' : '' }}">
+                                <div class="col-xl-2 col-md-2 ">
                                     <label class="form-control-label" for="input-siglas">{{ __('Siglas') }}</label>
-                                    <input type="text" name="siglas" id="input-siglas" class="form-control form-control-alternative{{ $errors->has('nombre') ? ' is-invalid' : '' }}" placeholder="{{ __('siglas') }}" value="{{ old('siglas') }}" required>
+                                    <input type="text" name="siglas" id="input-siglas" maxlength="9"class="form-control form-control-alternative{{ $errors->has('nombre') ? ' is-invalid' : '' }}" placeholder="{{ __('siglas') }}" value="{{ old('siglas') }}" required>
                                     @include('alerts.feedback', ['field' => 'siglas'])
                                 </div>
+                                <div class="col-xl-2 col-md-2">
+                                    <label for="">Seleccione Documento</label>
+                                    <input type="file" name="documento" >
+                                </div>    
+                               
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Registrar') }}</button>

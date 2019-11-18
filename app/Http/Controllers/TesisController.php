@@ -105,16 +105,20 @@ class TesisController extends Controller
                 
                 ->get();
       $pdf = PDF::loadView('tesis.pdf',['tesis'=>$data])->setPaper('a4','portrait');
-      return $pdf->stream('ReporteHC.pdf');
+      return $pdf->stream('INFORMEDOCUMENTARIO.pdf');
     
 }
 
 public function descargarPDF()
 {
-    $data = ['title' => 'Welcome to HDTuto.com'];
-    $pdf = PDF::loadView('tesis.pdf', $data);
+    $data = DB::table('gestiontesis')
+                
+                ->get();
+      $pdf = PDF::loadView('tesis.pdf',['tesis'=>$data])->setPaper('a4','portrait');
+     
+    
+    return $pdf->download('INFORME .pdf');
 
     
-    return $pdf->download('itsolutionstuff.pdf');
 }
     }
