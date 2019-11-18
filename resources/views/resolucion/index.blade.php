@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Gestión Tesis'), 'pageSlug' => 'tesis'])
+@extends('layouts.app', ['page' => __('Gestión Resolución'), 'pageSlug' => 'resolucion'])
 
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">{{ __('Tesis Registrados') }}</h4>
+                            <h4 class="card-title">{{ __('Resoluciones Registradas') }}</h4>
                         </div>
                         <div class="col-4 text-right">
                        
@@ -26,31 +26,39 @@
                             }
                             </script>
                                 <th scope="col">{{ __('Código') }}</th>
-                                <th scope="col">{{ __('Nombre') }}</th>
-                                <th scope="col">{{ __('Escuela') }}</th>
-                                <th scope="col">{{ __('Siglas') }}</th>
+                                <th scope="col">{{ __('Estudiante') }}</th>
+                                <th scope="col">{{ __('Presidente') }}</th>
+                                <th scope="col">{{ __('Secretario') }}</th>
+                                <th scope="col">{{ __('Vocal') }}</th>
+                                <th scope="col">{{ __('Lugar') }}</th>
+                                <th scope="col">{{ __('Hora') }}</th>
+                                <th scope="col">{{ __('Fecha') }}</th>
                                 <th scope="col">{{ __('Creation Date') }}</th>
                                 <th scope="col">{{ __('Opciones') }}</th>
                                 <div class="col-xl-3 col-md-6">
                                 
                                 <select onChange=nav(this.value) name=combo1 class=menudespl width="200">
-                                <OPTION value="tesis">Selecciona un destino</OPTION>
+                                <OPTION value="resolucion">Selecciona un destino</OPTION>
                                 <OPTION value="tesis/create">Tesis</OPTION>
                                 <OPTION value="resolucion/create">Resolucion</OPTION>
                             </thead>
                             <tbody>
-                            @foreach($tesis as $ts)
+                            @foreach($resolucion as $rs)
                             <tr>
-                            <td>{{$ts->codigo}}</td>
-                            <td>{{$ts->nombre}}</td>
-                            <td>{{$ts->carrera}}</td>
-                            <td>{{$ts->siglas}}</td>
-                            <td>{{ Carbon\Carbon::parse($ts->created_at)->format('Y-m-d') }}</td>
+                            <td>{{$rs->codigo}}</td>
+                            <td>{{$rs->estudiante}}</td>
+                            <td>{{$rs->presidente}}</td>
+                            <td>{{$rs->secretario}}</td>
+                            <td>{{$rs->vocal}}</td>
+                            <td>{{$rs->lugar}}</td>
+                            <td>{{$rs->hora}}</td>
+                            <td>{{$rs->fecha}}</td>
+                            <td>{{ Carbon\Carbon::parse($rs->created_at)->format('Y-m-d') }}</td>
                             <td>
-                            <a  data-toggle="modal" data-target="#modal-info-{{$ts->id}}" class="btn btn-info btn-sm" href="">Modal datos</a>
-                            @include('tesis.info')
-                            <a href="{{ route('stream') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>mostrar</a>
-                            <a href="{{ route('descargar') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>descargar</a>
+                            <a  data-toggle="modal" data-target="#modal-info-{{$rs->re_id}}" class="btn btn-info btn-sm" href="">Modal datos</a>
+                            @include('resolucion.info')
+                            <a href="{{ route('rstream') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>mostrar</a>
+                            <a href="{{ route('rdescargar') }}" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>descargar</a>
                             
                             </td>
                           </tr>
@@ -66,11 +74,6 @@
         </div>
     </div>
 @endsection
-
-
-
-
-
 
 
 

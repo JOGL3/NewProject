@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Tesis;
+use App\Resolucion;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use PDF;
-class TesisController extends Controller
+
+
+
+class ResolucionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +19,10 @@ class TesisController extends Controller
      */
     public function index(Request $request)
     {
-        $data = DB::table('gestiontesis')
+        $data = DB::table('resolucion')
         ->get();
                   
-       return view('tesis.index',['tesis'=>$data]);
+       return view('resolucion.index',['resolucion'=>$data]);
     }
 
     /**
@@ -29,7 +32,7 @@ class TesisController extends Controller
      */
     public function create()
     {
-        return view('tesis.create');
+        return view('resolucion.create');
     }
 
     /**
@@ -43,15 +46,19 @@ class TesisController extends Controller
         {
             $this->validate($request,[
                 'codigo' => 'required|',
-                'nombre' => 'required|',
-                'carrera' => 'required|',
-                'siglas' => 'required|',
+                'estudiante' => 'required|',
+                'presidente' => 'required|',
+                'secretario' => 'required|',
+                'vocal' => 'required|',
+                'lugar' => 'required|',
+                'hora' => 'required|',
+                'fecha' => 'required|',
                
                
             ]);
       $data = $request->all();
-      $Tesis = Tesis::create($data);
-      return redirect()->route('tesis.index')->with('status', 'Documento agregado satisfactoriamente!');
+      $Resolucion = Resolucion::create($data);
+      return redirect()->route('resolucion.index')->with('status', 'Resolucion agregada satisfactoriamente!');
     }
 
 
@@ -101,20 +108,20 @@ class TesisController extends Controller
     }
     public function generatePDF()
 {
-    $data = DB::table('gestiontesis')
+    $data = DB::table('resolucion')
                 
                 ->get();
-      $pdf = PDF::loadView('tesis.pdf',['tesis'=>$data])->setPaper('a4','portrait');
+      $pdf = PDF::loadView('resolucion.pdf',['resolucion'=>$data])->setPaper('a4','portrait');
       return $pdf->stream('INFORMEDOCUMENTARIO.pdf');
     
 }
 
 public function descargarPDF()
 {
-    $data = DB::table('gestiontesis')
-                ->where('gestiontesis.id',"=","2")
+    $data = DB::table('resolucion')
+                
                 ->get();
-      $pdf = PDF::loadView('tesis.pdf',['tesis'=>$data])->setPaper('a4','portrait');
+      $pdf = PDF::loadView('resolucion.pdf',['resolucion'=>$data])->setPaper('a4','portrait');
      
     
     return $pdf->download('INFORME .pdf');

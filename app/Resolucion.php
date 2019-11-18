@@ -4,17 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tesis extends Model
+class Resolucion extends Model
 {
-    protected $table = 'gestiontesis';
-    protected $primaryKey = 'id';
+    protected $table = 'resolucion';
+    protected $primaryKey = 're_id';
     public $timestamps = false;
     protected $fillable = [
         'codigo',
-        'nombre',
-        'carrera',
-        'siglas',
-        'nombredocum',
+        'estudiante',
+        'presidente',
+        'secretario',
+        'vocal',
+        'lugar',
+        'hora',
+        'fecha',
         
     ];
     protected $casts = [

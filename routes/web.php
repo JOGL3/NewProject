@@ -19,6 +19,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('stream','TesisController@generatePDF')->name('stream')->middleware('auth');
 Route::get('descargar','TesisController@descargarPDF')->name('descargar')->middleware('auth');
+Route::get('rstream','ResolucionController@generatePDF')->name('rstream')->middleware('auth');
+Route::get('rdescargar','ResolucionController@descargarPDF')->name('rdescargar')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'PageController@maps']);
@@ -32,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::resource('tesis', 'TesisController', ['except' => ['show']]);
+	Route::resource('resolucion', 'ResolucionController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);

@@ -119,11 +119,21 @@
         <div class="center">
           
           <p class="center"> __________________________<br> Mgtr. Even Deyser Pérez Rojas <br> Coordinador Académico de Escuela Profesional de Ingeniería de Sistemas <br> Filial-Callao</p>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         </div>
       </div>
        
     </section>
-    <div class="page-break"></div>
+    
     @endforeach
   </body>
 </html>
